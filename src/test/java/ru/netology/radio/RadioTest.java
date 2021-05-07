@@ -15,61 +15,67 @@ class RadioTest {
     }
 
     @Test
-    void next() {
+    void next1() {
         radio.next();
         assertEquals(1,radio.getStation());
-        radio.next();
-        radio.next();
-        radio.next();
-        radio.next();
-        radio.next();
-        radio.next();
-        radio.next();
-        radio.next();
-        radio.next();
+    }
+
+    @Test
+    void next2() {
+
+        for (int i = 1; i < 11; i++) {
+            radio.next();
+        }
+
         assertEquals(0,radio.getStation());
     }
 
     @Test
-    void prev() {
+    void prev1() {
         radio.prev();
         assertEquals(9,radio.getStation());
-        radio.prev();
-        radio.prev();
-        radio.prev();
-        radio.prev();
-        radio.prev();
-        radio.prev();
-        radio.prev();
-        radio.prev();
-        radio.prev();
+    }
+
+    @Test
+    void prev2() {
+
+        for (int i = 1; i < 11; i++) {
+            radio.prev();
+        }
+
         assertEquals(0,radio.getStation());
     }
 
     @Test
-    void volUp() {
+    void volUp1() {
         radio.volUp();
         assertEquals(1,radio.getVolume());
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
+    }
+
+    @Test
+    void volUp2() {
+
+        for (int i = 1; i < 12; i++) {
+            radio.volUp();
+        }
+
         assertEquals(10,radio.getVolume());
     }
 
     @Test
-    void volDown() {
+    void volDown1() {
         radio.volDown();
         assertEquals(0,radio.getVolume());
-        radio.volUp();
-        radio.volUp();
-        radio.volUp();
+    }
+
+    @Test
+    void volDown2() {
+        radio.volDown();
+
+        for (int i = 1; i < 4; i++) {
+            radio.volUp();
+        }
+
         radio.volDown();
         assertEquals(2,radio.getVolume());
     }
