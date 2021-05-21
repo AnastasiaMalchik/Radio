@@ -8,10 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     private Radio radio;
+    private Radio radioCustom;
+    private int maxStation = 500;
+    private int currentStation = 222;
 
     @BeforeEach
     void setUp() {
         radio = new Radio();
+        radioCustom = new Radio(maxStation);
     }
 
     @Test
@@ -21,9 +25,9 @@ class RadioTest {
     }
 
     @Test
-    void next2() {
+    void nextDefault() {
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 0; i < 11; i++) {
             radio.next();
         }
 
@@ -31,19 +35,51 @@ class RadioTest {
     }
 
     @Test
-    void prev1() {
-        radio.prev();
-        assertEquals(9,radio.getStation());
+    void nextCustom() {
+
+        for (int i = 0; i < maxStation+1; i++) {
+            radioCustom.next();
+        }
+
+        assertEquals(0,radioCustom.getStation());
     }
 
     @Test
-    void prev2() {
+    void prevDefault1() {
+        radio.prev();
+        assertEquals(10,radio.getStation());
+    }
 
-        for (int i = 1; i < 11; i++) {
+    @Test
+    void prevDefault2() {
+
+        for (int i = 0; i < 11; i++) {
             radio.prev();
         }
 
         assertEquals(0,radio.getStation());
+    }
+
+    @Test
+    void prevCustom1() {
+        radioCustom.prev();
+        assertEquals(maxStation,radioCustom.getStation());
+    }
+
+    @Test
+    void prevCustom2() {
+
+        for (int i = 0; i < maxStation+1; i++) {
+            radioCustom.prev();
+        }
+
+        assertEquals(0,radioCustom.getStation());
+    }
+
+    @Test
+    void testSetStation() {
+        radioCustom.setStation(currentStation);
+        assertEquals(currentStation,radioCustom.getStation());
     }
 
     @Test
@@ -55,11 +91,11 @@ class RadioTest {
     @Test
     void volUp2() {
 
-        for (int i = 1; i < 12; i++) {
+        for (int i = 0; i < Radio.maxVolumeValue+1; i++) {
             radio.volUp();
         }
 
-        assertEquals(10,radio.getVolume());
+        assertEquals(Radio.maxVolumeValue,radio.getVolume());
     }
 
     @Test

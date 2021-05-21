@@ -4,6 +4,19 @@ public class Radio {
 
     private int station = 0;
     private int volume = 0;
+    private int maxStation = 10;
+    static int maxVolumeValue = 100;
+
+    public Radio() {
+    }
+
+    public Radio(int maxStationValue) {
+        maxStation = maxStationValue;
+    }
+
+    public void setStation(int stationValue) {
+        station = stationValue;
+    }
 
     public int getStation() {
         return station;
@@ -16,7 +29,7 @@ public class Radio {
     public void next () {
         station++;
 
-        if (station > 9) {
+        if (station > maxStation) {
             station = 0;
         }
     }
@@ -25,12 +38,12 @@ public class Radio {
         station--;
 
         if (station < 0) {
-            station = 9;
+            station = maxStation;
         }
     }
 
     public void volUp () {
-        if (volume == 10) {
+        if (volume == maxVolumeValue) {
             return;
         }
 
