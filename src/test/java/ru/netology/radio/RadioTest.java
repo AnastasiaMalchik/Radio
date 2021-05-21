@@ -25,9 +25,9 @@ class RadioTest {
     }
 
     @Test
-    void nextDefolt() {
+    void nextDefault() {
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             radio.next();
         }
 
@@ -45,15 +45,15 @@ class RadioTest {
     }
 
     @Test
-    void prevDefolt1() {
+    void prevDefault1() {
         radio.prev();
-        assertEquals(9,radio.getStation());
+        assertEquals(10,radio.getStation());
     }
 
     @Test
-    void prevDefolt2() {
+    void prevDefault2() {
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             radio.prev();
         }
 
@@ -91,11 +91,11 @@ class RadioTest {
     @Test
     void volUp2() {
 
-        for (int i = 0; i < Radio::maxVolumeValue+1; i++) {
+        for (int i = 0; i < Radio.maxVolumeValue+1; i++) {
             radio.volUp();
         }
 
-        assertEquals(Radio::maxVolumeValue,radio.getVolume());
+        assertEquals(Radio.maxVolumeValue,radio.getVolume());
     }
 
     @Test
